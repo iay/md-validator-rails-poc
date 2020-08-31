@@ -1,0 +1,15 @@
+current directory: /Volumes/Cased/git/github/iay/md-validator-rails/vendor/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/opt/local/bin/ruby2.7 -I /opt/local/lib/ruby2.7/2.7.0 -r ./siteconf20200831-98239-ha3v5a.rb extconf.rb
+creating Makefile
+
+current directory: /Volumes/Cased/git/github/iay/md-validator-rails/vendor/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Volumes/Cased/git/github/iay/md-validator-rails/vendor/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Volumes/Cased/git/github/iay/md-validator-rails/vendor/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20200831-98239-1j1qauv/skiptrace/internal
