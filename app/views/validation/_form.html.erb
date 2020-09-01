@@ -1,0 +1,60 @@
+<%= form_with(model: validation, url: validation_validate_path, method: :post,
+    local: true) do |form| %>
+
+  <%
+    #
+    # Get the collection of available validators.
+    # May add errors to the validation if there is a problem reaching
+    # the back end.
+    #
+    validators = validation.validators
+  %>
+
+  <% if validation.errors.any? %>
+    <div id="error_explanation">
+      <h2>The following <%= pluralize(validation.errors.count, "issue") %> prevented validation:</h2>
+
+      <ul>
+        <% validation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if validation.results %>
+    <% if validation.results.any? %>
+      <table>
+        <tr>
+          <th>Status</th>
+          <th>Component</th>
+          <th>Message</th>
+        </tr>
+        <% validation.results.each do |result| %>
+          <tr>
+            <td><%= h result.status.upcase %>
+            <td><%= h result.component_id %>
+            <td><%= h result.message %>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <p>No issues detected.</p>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :metadata %>
+    <%= form.text_area :metadata, rows: 20, cols: 60 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :validator_id %>
+    <%= form.select(:validator_id, validators) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Perform validation' %>
+  </div>
+
+<% end %>
