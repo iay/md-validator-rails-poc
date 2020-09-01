@@ -45,10 +45,6 @@ class Validation
     begin
       api = ValidatorClient::ValidationApi.new
       @results = api.validate(@validator_id, @metadata)
-      # @results.each do |result|
-      #   errors.add :base, "#{result.status} from #{result.component_id}: #{result.message}"
-      # end
-
     rescue ValidatorClient::ApiError => e
 
       begin
@@ -57,12 +53,12 @@ class Validation
         body_vars = {}
       end
 
-      pp body_vars
-
       if e.code == 400      # bad request
-        response = JSON.parse e.response_body
-        errors.add :base, "#{response['error']}: #{response['message']}"
-        errors.add :base, e
+        m = "#{body_vars['error']}: #{body_vars['message']}"
+        if body_vars['cause']
+          m <<= " (#{body_vars['cause']})"
+        end
+        errors.add :base, m
       else
         errors.add :base, e
       end

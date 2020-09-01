@@ -1,6 +1,3 @@
-<%= form_with(model: validation, url: validation_validate_path, method: :post,
-    local: true) do |form| %>
-
   <%
     #
     # Get the collection of available validators.
@@ -12,7 +9,7 @@
 
   <% if validation.errors.any? %>
     <div id="error_explanation">
-      <h2>The following <%= pluralize(validation.errors.count, "issue") %> prevented validation:</h2>
+      <h2>The following <%= "issue".pluralize(validation.errors.count) %> prevented validation:</h2>
 
       <ul>
         <% validation.errors.full_messages.each do |message| %>
@@ -25,27 +22,34 @@
   <% if validation.results %>
     <% if validation.results.any? %>
       <table>
-        <tr>
-          <th>Status</th>
-          <th>Component</th>
-          <th>Message</th>
-        </tr>
-        <% validation.results.each do |result| %>
+        <thead>
           <tr>
-            <td><%= h result.status.upcase %>
-            <td><%= h result.component_id %>
-            <td><%= h result.message %>
+            <th>Status</th>
+            <th>Component</th>
+            <th>Message</th>
           </tr>
-        <% end %>
+        </thead>
+        <tbody>
+          <% validation.results.each do |result| %>
+            <tr>
+              <td class="status"><%= h result.status.upcase %>
+              <td><%= h result.component_id %>
+              <td><%= h result.message %>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     <% else %>
       <p>No issues detected.</p>
     <% end %>
   <% end %>
 
+  <%= form_with(model: validation, url: validation_validate_path, method: :post,
+      local: true) do |form| %>
+
   <div class="field">
     <%= form.label :metadata %>
-    <%= form.text_area :metadata, rows: 20, cols: 60 %>
+    <%= form.text_area :metadata, rows: 20, cols: 80 %>
   </div>
 
   <div class="field">
