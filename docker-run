@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#
+# Uncomment the following if the container is directly exposed.
+#
+#MAP_PORT="-p 3000:3000"
+
+#
+# Which docker network to deploy into. The value here is for my
+# own staging server; use "bridge" for the default docker network.
+#
+NETWORK=nginx-109
+#NETWORK=bridge
+
+docker run -d --restart=unless-stopped \
+  --name md-validator-rails-poc \
+  --hostname="md-validator-rails-poc" \
+  --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 \
+  $MAP_PORT --net=$NETWORK \
+  --env ASSET_HOST="https://apps.iay.org.uk/md-validator-rails-poc" \
+  -v `pwd`/log:/app/app/log \
+  iay/md-validator-rails-poc

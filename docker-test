@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run --rm -it \
+  -p 3000:3000 \
+  --name md-validator-rails-poc \
+  -v `pwd`/log:/app/app/log \
+  iay/md-validator-rails-poc
