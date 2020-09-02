@@ -35,6 +35,41 @@ class Validation
     return @validators
   end
 
+  def get_api_exception_message(e)
+    pp 'exception to message: '
+    pp e.response_body
+
+    #
+    # Start by assuming that we got something explicit back from the
+    # web service. This will be a JSON object we can dig deeper into.
+    #
+    if e.response_body
+      begin
+        body = JSON.parse e.response_body
+        m = "#{body['error']}: #{body['message']}"
+        if body['cause']
+          m <<= " (#{body['cause']})"
+        end
+        return m
+      rescue
+        # fall through
+      end
+    end
+
+    #
+    # Nothing came back from the service, it's a local issue
+    # of some kind. If we have a message, let's use that.
+    #
+    if e.message
+      return e.message
+    end
+
+    #
+    # No idea.
+    #
+    return "unknown validator API error (#{e.code})"
+  end
+
   def send_to_validator
     #
     # If we already have local validation errors, don't
@@ -46,22 +81,7 @@ class Validation
       api = ValidatorClient::ValidationApi.new
       @results = api.validate(@validator_id, @metadata)
     rescue ValidatorClient::ApiError => e
-
-      begin
-        body_vars = JSON.parse e.response_body
-      rescue
-        body_vars = {}
-      end
-
-      if e.code == 400      # bad request
-        m = "#{body_vars['error']}: #{body_vars['message']}"
-        if body_vars['cause']
-          m <<= " (#{body_vars['cause']})"
-        end
-        errors.add :base, m
-      else
-        errors.add :base, e
-      end
+      errors.add :base, get_api_exception_message(e)
     end
 
   end
