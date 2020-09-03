@@ -56,8 +56,12 @@ COPY . ./
 
 # Precompile assets
 ENV RAILS_ENV=production
+ENV SECRET_KEY_BASE=dummy
 RUN bin/rails assets:precompile
 
 ENV RAILS_SERVE_STATIC_FILES=true
+
+EXPOSE 3000
+
 CMD ["bin/rails", "server", "--environment=production", \
       "--config=config-production.ru"]
