@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#
+# Push the latest image, just pushed, to a private repository.
+#
+HERE=iay/md-validator-rails-poc:latest
+THERE=registry.iay.org.uk/md-validator-rails-poc:latest
+
+docker tag ${HERE} ${THERE}
+docker push ${THERE}
