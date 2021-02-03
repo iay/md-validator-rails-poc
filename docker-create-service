@@ -6,7 +6,7 @@
 docker service create \
   --name md-validator-rails-poc \
   --hostname md-validator-rails-poc \
-  --network nginx-109 \
+  --network traefik \
   --env ASSET_HOST="https://apps.iay.org.uk/md-validator-rails-poc" \
   --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 \
   --constraint node.platform.arch==x86_64 \
@@ -16,6 +16,6 @@ docker service create \
   --label traefik.http.routers.rails-poc.entrypoints=websecure \
   --label traefik.http.routers.rails-poc.tls=true \
   --label traefik.http.routers.rails-poc.tls.certResolver=le \
-  --label "traefik.http.routers.rails-poc.rule=Host(\`test.iay.org.uk\`) && PathPrefix(\`/md-validator-rails-poc\`)" \
+  --label "traefik.http.routers.rails-poc.rule=Host(\`apps.iay.org.uk\`) && PathPrefix(\`/md-validator-rails-poc\`)" \
   --label traefik.http.routers.rails-poc.service=rails-poc \
   registry.iay.org.uk/md-validator-rails-poc:latest
