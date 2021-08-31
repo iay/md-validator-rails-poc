@@ -1,24 +1,24 @@
-# README
+# `md-validator-rails-poc`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A proof-of-concept interactive web front end to the
+[`md-validator`](https://github.com/iay/md-validator)
+metadata validator web service project.
 
-Things you may want to cover:
+The container built is based on the `ruby:2.7-alpine` image.
 
-* Ruby version
+A corresponding non-containerised development environment should include:
 
-* System dependencies
+* Ruby 2.7
+* Node.js 14
+* Yarn 1.22
 
-* Configuration
+In my case:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+$ ruby -v
+ruby 2.7.4p191 (2021-07-07 revision a21a3b7d23) [x86_64-darwin20]
+$ node -v
+v14.17.5
+$ yarn -v
+1.22.11
+```
