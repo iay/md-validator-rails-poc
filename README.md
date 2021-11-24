@@ -18,7 +18,9 @@ In my case:
 $ ruby -v
 ruby 2.7.4p191 (2021-07-07 revision a21a3b7d23) [x86_64-darwin20]
 $ node -v
-v14.17.5
+v14.18.1
 $ yarn -v
-1.22.11
+1.22.17
 ```
+
+I get these dependencies from [MacPorts](https://www.macports.org).
