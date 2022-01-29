@@ -24,3 +24,8 @@ $ yarn -v
 ```
 
 I get these dependencies from [MacPorts](https://www.macports.org).
+
+## Test Deployment
+
+The `docker-test` script can be used to run a test container locally. The
+application is exposed at `http://localhost:3000/md-validator-rails-poc`.
