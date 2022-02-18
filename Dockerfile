@@ -5,11 +5,6 @@ FROM ruby:2.7-alpine as builder
 
 MAINTAINER Ian Young <ian@iay.org.uk>
 
-# throw errors if Gemfile has been modified since Gemfile.lock
-RUN bundle config --global frozen 1
-
-RUN bundle config set deployment 'true'
-
 # Install system packages
 RUN apk add --update --no-cache \
       binutils-gold \
@@ -39,11 +34,20 @@ RUN apk add --update --no-cache \
 
 WORKDIR /app
 
+# Acquire a recent bundler gem to match Gemfile.lock
+RUN gem install bundler:2.2.18
+
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
+
+RUN bundle config set deployment 'true'
+RUN bundle config set without 'devel'
+
 #
 # Install gems.
 #
 COPY Gemfile Gemfile.lock ./
-RUN bundle install --without=devel
+RUN bundle install
 
 #
 # Install node packages.
