@@ -4,7 +4,7 @@ A proof-of-concept interactive web front end to the
 [`md-validator`](https://github.com/iay/md-validator)
 metadata validator web service project.
 
-The container built is based on the `ruby:2.7-alpine` image.
+The container built is based on the `ruby:3.0-alpine` image.
 
 A corresponding non-containerised development environment should include:
 
