@@ -8,7 +8,7 @@ The container built is based on the `ruby:3.0-alpine` image.
 
 A corresponding non-containerised development environment should include:
 
-* Ruby 2.7
+* Ruby 3.0
 * Node.js 14
 * Yarn 1.22
 
@@ -16,9 +16,9 @@ In my case:
 
 ```bash
 $ ruby -v
-ruby 2.7.4p191 (2021-07-07 revision a21a3b7d23) [x86_64-darwin20]
+ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x86_64-darwin21]
 $ node -v
-v14.18.1
+v14.19.0
 $ yarn -v
 1.22.17
 ```
