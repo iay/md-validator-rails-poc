@@ -1,7 +1,7 @@
 #
 # Dockerfile for md-validator-rails-poc.
 #
-FROM ruby:2.7-alpine as builder
+FROM ruby:3.0-alpine as builder
 
 MAINTAINER Ian Young <ian@iay.org.uk>
 
