@@ -7,7 +7,7 @@
 #
 FROM ruby:3.0-alpine as builder
 
-MAINTAINER Ian Young <ian@iay.org.uk>
+LABEL maintainer="Ian Young <ian@iay.org.uk>"
 
 # Install system packages
 RUN apk add --update --no-cache \
@@ -73,7 +73,7 @@ RUN bin/rails assets:precompile
 #
 FROM ruby:3.0-alpine AS poc
 
-MAINTAINER Ian Young <ian@iay.org.uk>
+LABEL maintainer="Ian Young <ian@iay.org.uk>"
 
 # Install system packages
 RUN apk add --update --no-cache \
