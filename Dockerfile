@@ -128,7 +128,6 @@ RUN rm package.json yarn.lock
 
 # Copy precompiled assets
 COPY --from=builder /app/public/assets public/assets
-COPY --from=builder /app/public/packs  public/packs
 
 ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
