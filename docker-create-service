@@ -19,4 +19,5 @@ docker service create \
   --label traefik.http.routers.rails-poc.tls.certResolver=le \
   --label "traefik.http.routers.rails-poc.rule=Host(\`apps.iay.org.uk\`) && PathPrefix(\`/md-validator-rails-poc\`)" \
   --label traefik.http.routers.rails-poc.service=rails-poc \
+  --with-registry-auth \
   registry.iay.org.uk/systems/misc/md-validator-rails-poc:latest
