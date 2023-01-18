@@ -5,7 +5,7 @@
 #
 # First stage: build the application and the precompiled assets.
 #
-FROM ruby:3.0-alpine as builder
+FROM ruby:3.2-alpine as builder
 
 LABEL maintainer="Ian Young <ian@iay.org.uk>"
 
@@ -71,7 +71,7 @@ RUN bin/rails assets:precompile
 # Second stage: executable image with no Node presence
 # and with the webpacker gem excluded.
 #
-FROM ruby:3.0-alpine AS poc
+FROM ruby:3.2-alpine AS poc
 
 LABEL maintainer="Ian Young <ian@iay.org.uk>"
 

@@ -8,7 +8,7 @@ The container built is based on the `ruby:3.0-alpine` image.
 
 A corresponding non-containerised development environment should include:
 
-* Ruby 3.0
+* Ruby 3.2
 * Node.js 14
 * Yarn 1.22
 
@@ -16,11 +16,11 @@ In my case:
 
 ```bash
 $ ruby -v
-ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x86_64-darwin21]
+ruby 3.2.0 (2022-12-25 revision a528908271) [x86_64-darwin22]
 $ node -v
-v14.19.0
+v14.21.2
 $ yarn -v
-1.22.17
+1.22.19
 ```
 
 I get these dependencies from [MacPorts](https://www.macports.org).

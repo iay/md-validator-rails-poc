@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 3.0.3'
+ruby '~> 3.2.0'
 
 # Metadata validator client library
 gem 'md-validator-client', '~> 1.0.3'
