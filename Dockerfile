@@ -38,9 +38,6 @@ RUN apk add --update --no-cache \
 
 WORKDIR /app
 
-# Acquire a recent bundler gem to match Gemfile.lock
-RUN gem install bundler:2.2.18
-
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
@@ -101,9 +98,6 @@ RUN apk add --update --no-cache \
       tzdata
 
 WORKDIR /app
-
-# Acquire a recent bundler gem to match Gemfile.lock
-RUN gem install bundler:2.2.18
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
