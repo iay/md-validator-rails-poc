@@ -17,6 +17,7 @@ RUN apk add --update --no-cache \
       file \
       g++ \
       gcc \
+      gcompat \
       git \
       less \
       libstdc++ \
@@ -80,6 +81,7 @@ RUN apk add --update --no-cache \
       file \
       g++ \
       gcc \
+      gcompat \
       git \
       less \
       libstdc++ \
