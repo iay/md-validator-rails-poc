@@ -10,7 +10,6 @@ docker service create \
   --env ASSET_HOST="https://apps.iay.org.uk/md-validator-rails-poc" \
   --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 \
   --constraint node.platform.arch==x86_64 \
-  --constraint node.labels.type==general \
   --mount type=volume,source=rails-poc-logs,destination=/app/app/log \
   --label traefik.enable=true \
   --label traefik.http.services.rails-poc.loadbalancer.server.port=3000 \
